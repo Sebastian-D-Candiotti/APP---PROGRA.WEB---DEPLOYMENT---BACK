@@ -1,0 +1,636 @@
+INSERT INTO usuarios(nombre, password, correo, img, estado, fecharegistro, rol, dni, "createdAt", "updatedAt")
+VALUES
+  ('Ariel Enriquez', '123456', 'ariel@gmail.com', '/userAssets/image 26.png', true, '2025-10-01', 'admin', '3242423', NOW(), NOW()),
+  ('Helmut Saker', '123456', 'helmut@gmail.com', '/userAssets/image 26.png', true, '2025-10-02', 'cliente', '3242423', NOW(), NOW()),
+  ('Rodrigo Thompson', '123456', 'rodrigo@gmail.com', '/userAssets/image 26.png', true, '2025-10-03', 'cliente', '3242423', NOW(), NOW()),
+  ('Sebastian Valverde', '123456', 'sebastian.valverde@gmail.com', '/userAssets/image 26.png', true, '2025-10-04', 'cliente', '3242423', NOW(), NOW()),
+  ('Sebastian Diaz', '123456', 'sebastian.diaz@gmail.com', '/userAssets/image 26.png', true, '2025-10-05', 'cliente', '3242423', NOW(), NOW()),
+  ('Nehemias Falcon', '123456', 'nehemias@gmail.com', '/userAssets/image 26.png', true, '2025-10-06', 'cliente', '3242423', NOW(), NOW()),
+  ('user A', '123456', 'nehemias@gmail.com', '/userAssets/image 26.png', true, '2025-10-06', 'cliente', '3242423', NOW(), NOW()),
+  ('userB', '123456', 'nehemias@gmail.com', '/userAssets/image 26.png', true, '2025-10-06', 'cliente', '3242423', NOW(), NOW()),
+  ('Lucía Torres', '123456', 'lucia.torres@gmail.com', '/userAssets/image 26.png', true, '2025-10-07', 'cliente', '3242423', NOW(), NOW()),
+  ('Carlos Ruiz', '123456', 'carlos.ruiz@gmail.com', '/userAssets/image 26.png', true, '2025-10-08', 'cliente', '3242423', NOW(), NOW()),
+  ('María López', '123456', 'maria.lopez@gmail.com', '/userAssets/image 26.png', true, '2025-10-09', 'cliente', '3242423', NOW(), NOW()),
+  ('Andrés Ramos', '123456', 'andres.ramos@gmail.com', '/userAssets/image 26.png', true, '2025-10-10', 'cliente', '3242423', NOW(), NOW()),
+  ('Valentina Soto', '123456', 'valentina.soto@gmail.com', '/userAssets/image 26.png', true, '2025-10-11', 'cliente', '3242423', NOW(), NOW()),
+  ('Pedro Castillo', '123456', 'pedro.castillo@gmail.com', '/userAssets/image 26.png', true, '2025-10-12', 'cliente', '3242423', NOW(), NOW()),
+  ('Diana Morales', '123456', 'diana.morales@gmail.com', '/userAssets/image 26.png', true, '2025-10-13', 'cliente', '3242423', NOW(), NOW()),
+  ('Gabriel Flores', '123456', 'gabriel.flores@gmail.com', '/userAssets/image 26.png', true, '2025-10-14', 'cliente', '3242423', NOW(), NOW()),
+  ('Sofía Vega', '123456', 'sofia.vega@gmail.com', '/userAssets/image 26.png', true, '2025-10-15', 'cliente', '3242423', NOW(), NOW()),
+  ('Miguel Herrera', '123456', 'miguel.herrera@gmail.com', '/userAssets/image 26.png', true, '2025-10-16', 'cliente', '3242423', NOW(), NOW());
+
+INSERT INTO categorias (nombre, img, ruta, label, descripcion,"createdAt","updatedAt") 
+VALUES
+  ('Videojuegos', '/productosAssets/metal.jpeg', 'videojuegos', 'Videojuegos', 'Videojuegos para todas las plataformas',NOW(),NOW()),
+  ('Consolas', '/productosAssets/ps5.jpeg', 'consolas', 'Consolas', 'Consolas de última generación y retro',NOW(),NOW()),
+  ('Periféricos', '/productosAssets/audifonos.webp', 'perifericos', 'Periféricos', 'Audífonos, teclados, mouse y más accesorios',NOW(),NOW()),
+  ('Coleccionables', '/productosAssets/pokemones.jpg', 'coleccionables', 'Coleccionables', 'Figuras, posters y coleccionables de tus franquicias favoritas',NOW(),NOW()),
+  ('Membresias', '/productosAssets/pokemones.jpg', 'membresias', 'Membresias', 'Suscripciones y membresías de plataformas de juegos',NOW(),NOW()),
+  ('Merch', '/productosAssets/pokemones.jpg', 'merch', 'Merch', 'Ropa, tazas y merchandising de videojuegos',NOW(),NOW()),
+  ('Componentes-PC', '/productosAssets/pokemones.jpg', 'componentes-pc', 'Componentes PC', 'Partes de PC, tarjetas gráficas, memoria y más',NOW(),NOW()),
+  ('Juguetes', '/productosAssets/pokemones.jpg', 'juguetes', 'Juguetes', 'Juguetes y figuras para todas las edades',NOW(),NOW());
+
+INSERT INTO productos(descuento, stock, nombre, presentacion, categoria_id, precio, img, genero, descripcion, "createdAt", "updatedAt")
+VALUES
+    (50, 65, 'Dying Light: The Beast (PC)', 'Steam Account - GLOBAL', 1, 29.99, '/productosAssets/dying.jpg', 'accion', 'Juego de supervivencia y parkour en un mundo abierto infestado de zombis con ciclo día/noche.', NOW(), NOW()), 
+    (37, 56, 'RDO2 Juego PS4', 'digital', 1, 199.00, '/productosAssets/RDR2.jpg', 'accion', 'Aventura épica en el salvaje oeste siguiendo al forajido Arthur Morgan en un mundo abierto detallado.', NOW(), NOW()),
+    (37, 3, 'Hollow Knight PS4', 'digital', 1, 199.00, '/productosAssets/hollow.jpg', 'aventura', 'Metroidvania 2D desafiante ambientado en un vasto reino subterráneo de insectos y misterios.', NOW(), NOW()),
+    (37, 43, 'Spiderman PS4', 'digital', 1, 199.00, '/productosAssets/spiderman.jpeg', 'aventura', 'Acción en mundo abierto controlando a Peter Parker con combate fluido y acrobacias en Nueva York.', NOW(), NOW()),
+    (37, 12, 'Madden 25 PS4', 'digital', 1, 199.00, '/productosAssets/madden.jpeg', 'deporte', 'Simulador de fútbol americano con físicas realistas y modos de franquicia y carrera renovados.', NOW(), NOW()),
+    (37, 56, '2K25 PS4', 'digital', 1, 199.00, '/productosAssets/2k25.jpeg', 'deporte', 'Experiencia de baloncesto profesional con modos Mi CARRERA y MyTEAM para dominar la NBA.', NOW(), NOW()),
+    (37, 45, 'CALL OF DUTY BOIII PS4', 'digital', 1, 199.00, '/productosAssets/call.jpg', 'accion', 'Shooter futurista ambientado en 2065 con campaña, multijugador y modo zombies.', NOW(), NOW()),
+    (37, 23, 'SPIDERMAN MILES PS4', 'digital', 1, 199.00, '/productosAssets/miles.jpg', 'aventura', 'Aventura de acción donde Miles Morales domina poderes bioeléctricos para proteger Nueva York.', NOW(), NOW()),
+    (37, 65, 'JUMP FORCE PS4', 'digital', 1, 199.00, '/productosAssets/jump.jpeg', 'lucha', 'Juego de lucha 3D que reúne a los héroes más icónicos del manga Shonen Jump.', NOW(), NOW()),
+    (37, 87, 'DEMON SLAYER PS4', 'digital', 1, 199.00, '/productosAssets/demon.jpg', 'lucha', 'Juego de lucha basado en el anime donde revives la historia de Tanjiro enfrentando demonios.', NOW(), NOW()),
+    (37, 2, '2K26 PS4', 'digital', 1, 199.00, '/productosAssets/2k26.jpg', 'deporte', 'Nueva entrega de baloncesto con tecnología ProPLAY para animaciones y jugabilidad ultra realistas.', NOW(), NOW()),
+    (37, 54, 'CRONOS PS4', 'digital', 1, 199.00, '/productosAssets/cronos.jpg', 'accion', 'Terror y supervivencia con viajes en el tiempo entre un futuro apocalíptico y la Polonia de los 80.', NOW(), NOW()),
+    (37, 67, 'CALL OF DUTY 7 PS4', 'digital', 1, 199.00, '/productosAssets/call7.jpg', 'accion', 'Shooter táctico ambientado en 2035 siguiendo a David Section Mason contra una amenaza global.', NOW(), NOW()),
+    (37, 12, 'BATTLEFIELD 6', 'digital', 1, 199.00, '/productosAssets/battlefield.webp', 'accion', 'Guerra total en un futuro cercano (2042) con batallas masivas y recursos limitados.', NOW(), NOW()),
+    (37, 34, 'BORDERLANDS 4', 'digital', 1, 199.00, '/productosAssets/borderlands.webp', 'accion', 'Looter-shooter cooperativo donde nuevos Buscacámaras enfrentan a un tirano en el planeta Kairos.', NOW(), NOW()),
+    (37, 12, 'NINJA 4', 'digital', 1, 199.00, '/productosAssets/ninja.jpg', 'accion', 'Acción ninja futurista en Tokio enfrentando el resurgimiento de un Dragón Oscuro.', NOW(), NOW()),
+    (37, 3, 'PlayStation 5', 'digital', 2, 199.00, '/productosAssets/ps5.jpeg', 'Hardware', 'Consola de Sony con SSD ultrarrápido, gráficos potentes y mando DualSense inmersivo.', NOW(), NOW()),
+    (37, 4, 'Xbox Series X', 'digital', 2, 199.00, '/productosAssets/xbox.webp', 'Hardware', 'La consola más potente de Microsoft con 1TB SSD, 120 FPS y función Quick Resume.', NOW(), NOW());
+
+
+
+
+
+
+-- 1. INSERTAR CARRITOS (Un carrito para cada usuario del 1 al 3)
+INSERT INTO carrito_de_compras (id_user, "createdAt", "updatedAt")
+VALUES
+    (1, NOW(), NOW()), -- Carrito de Ariel
+    (2, NOW(), NOW()), -- Carrito de Helmut
+    (3, NOW(), NOW()); -- Carrito de Rodrigo
+
+-- 2. INSERTAR ITEMS EN EL CARRITO (Simulando productos agregados)
+-- Ariel (Carrito 1) tiene Dying Light (ID 1) y PS5 (ID 17)
+INSERT INTO item_carritos (id_carrito, id_producto, "createdAt", "updatedAt")
+VALUES
+    (1, 1, NOW(), NOW()), 
+    (1, 17, NOW(), NOW());
+
+-- Helmut (Carrito 2) tiene Madden 25 (ID 5)
+INSERT INTO item_carritos (id_carrito, id_producto, "createdAt", "updatedAt")
+VALUES
+    (2, 5, NOW(), NOW()); 
+
+-- 3. INSERTAR ORDENES DE COMPRA (Mínimo 9 órdenes por usuario)
+-- Órdenes de Ariel (ID 1) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-05', 1001, 825.99, 825.99, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-01-12', 1002, 995.00, 995.00, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-01-20', 1003, 995.00, 995.00, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-02-02', 1004, 825.99, 825.99, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-02-15', 1005, 995.00, 995.00, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-02-28', 1006, 995.00, 995.00, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-03-10', 1007, 995.00, 995.00, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-03-22', 1008, 995.00, 995.00, '4555********1234', 'Visa', true, 1, NOW(), NOW()),
+    ('2025-04-05', 1009, 825.99, 825.99, '4555********1234', 'Visa', true, 1, NOW(), NOW());
+
+-- Órdenes de Helmut (ID 2) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-08', 1010, 995.00, 995.00, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-01-15', 1011, 825.99, 825.99, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-01-28', 1012, 995.00, 995.00, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-02-10', 1013, 825.99, 825.99, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-02-20', 1014, 995.00, 995.00, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-03-05', 1015, 995.00, 995.00, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-03-18', 1016, 995.00, 995.00, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-03-25', 1017, 825.99, 825.99, '5100********1111', 'MasterCard', true, 2, NOW(), NOW()),
+    ('2025-04-02', 1018, 995.00, 995.00, '5100********1111', 'MasterCard', true, 2, NOW(), NOW());
+
+-- Órdenes de Rodrigo (ID 3) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-10', 1019, 825.99, 825.99, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-01-18', 1020, 995.00, 995.00, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-02-03', 1021, 995.00, 995.00, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-02-14', 1022, 995.00, 995.00, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-02-25', 1023, 825.99, 825.99, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-03-08', 1024, 995.00, 995.00, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-03-20', 1025, 995.00, 995.00, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-03-28', 1026, 825.99, 825.99, '5100********9876', 'MasterCard', true, 3, NOW(), NOW()),
+    ('2025-04-08', 1027, 995.00, 995.00, '5100********9876', 'MasterCard', true, 3, NOW(), NOW());
+
+-- Órdenes de Sebastian Valverde (ID 4) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-07', 1028, 995.00, 995.00, '4111111111111111', 'Visa', false, 4, NOW(), NOW()),
+    ('2025-01-16', 1029, 825.99, 825.99, '4111111111111111', 'Visa', true, 4, NOW(), NOW()),
+    ('2025-02-01', 1030, 995.00, 995.00, '4111111111111111', 'Visa', true, 4, NOW(), NOW()),
+    ('2025-02-12', 1031, 995.00, 995.00, '4111111111111111', 'Visa', false, 4, NOW(), NOW()),
+    ('2025-02-22', 1032, 825.99, 825.99, '4111111111111111', 'Visa', true, 4, NOW(), NOW()),
+    ('2025-03-07', 1033, 995.00, 995.00, '4111111111111111', 'Visa', true, 4, NOW(), NOW()),
+    ('2025-03-19', 1034, 995.00, 995.00, '4111111111111111', 'Visa', true, 4, NOW(), NOW()),
+    ('2025-03-26', 1035, 995.00, 995.00, '4111111111111111', 'Visa', true, 4, NOW(), NOW()),
+    ('2025-04-06', 1036, 995.00, 995.00, '4111111111111111', 'Visa', true, 4, NOW(), NOW());
+
+-- Órdenes de Sebastian Diaz (ID 5) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-09', 1037, 825.99, 825.99, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-01-19', 1038, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-02-05', 1039, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-02-16', 1040, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-02-27', 1041, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-03-09', 1042, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-03-21', 1043, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-03-29', 1044, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW()),
+    ('2025-04-07', 1045, 995.00, 995.00, '5555555555555555', 'MasterCard', true, 5, NOW(), NOW());
+
+-- Órdenes de Nehemias Falcon (ID 6) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-06', 1046, 825.99, 825.99, '3714496353622632', 'AmEx', true, 6, NOW(), NOW()),
+    ('2025-01-17', 1047, 995.00, 995.00, '3714496353622632', 'AmEx', false, 6, NOW(), NOW()),
+    ('2025-02-04', 1048, 995.00, 995.00, '3714496353622632', 'AmEx', true, 6, NOW(), NOW()),
+    ('2025-02-13', 1049, 995.00, 995.00, '3714496353622632', 'AmEx', true, 6, NOW(), NOW()),
+    ('2025-02-24', 1050, 995.00, 995.00, '3714496353622632', 'AmEx', true, 6, NOW(), NOW()),
+    ('2025-03-06', 1051, 995.00, 995.00, '3714496353622632', 'AmEx', true, 6, NOW(), NOW()),
+    ('2025-03-17', 1052, 995.00, 995.00, '3714496353622632', 'AmEx', true, 6, NOW(), NOW()),
+    ('2025-03-24', 1053, 995.00, 995.00, '3714496353622632', 'AmEx', true, 6, NOW(), NOW()),
+    ('2025-04-04', 1054, 995.00, 995.00, '3714496353622632', 'AmEx', true, 6, NOW(), NOW());
+
+-- Órdenes de user A (ID 7) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-11', 1055, 825.99, 825.99, '6011111111111117', 'Discover', true, 7, NOW(), NOW()),
+    ('2025-01-21', 1056, 995.00, 995.00, '6011111111111117', 'Discover', true, 7, NOW(), NOW()),
+    ('2025-02-07', 1057, 825.99, 825.99, '6011111111111117', 'Discover', false, 7, NOW(), NOW()),
+    ('2025-02-18', 1058, 995.00, 995.00, '6011111111111117', 'Discover', true, 7, NOW(), NOW()),
+    ('2025-03-01', 1059, 995.00, 995.00, '6011111111111117', 'Discover', true, 7, NOW(), NOW()),
+    ('2025-03-11', 1060, 995.00, 995.00, '6011111111111117', 'Discover', true, 7, NOW(), NOW()),
+    ('2025-03-23', 1061, 995.00, 995.00, '6011111111111117', 'Discover', true, 7, NOW(), NOW()),
+    ('2025-03-30', 1062, 995.00, 995.00, '6011111111111117', 'Discover', true, 7, NOW(), NOW()),
+    ('2025-04-09', 1063, 825.99, 825.99, '6011111111111117', 'Discover', true, 7, NOW(), NOW());
+
+-- Órdenes de userB (ID 8) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-14', 1064, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-01-24', 1065, 825.99, 825.99, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-02-08', 1066, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-02-17', 1067, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-02-26', 1068, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-03-12', 1069, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-03-24', 1070, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-04-01', 1071, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW()),
+    ('2025-04-10', 1072, 995.00, 995.00, '3782822463100005', 'AmEx', true, 8, NOW(), NOW());
+
+-- Órdenes de Lucía Torres (ID 9) - 9 órdenes
+INSERT INTO ordenes (fecha, idp, total, precio_productos, "NroTarjeta", "TipoTarjeta", estado, id_user, "createdAt", "updatedAt")
+VALUES 
+    ('2025-01-13', 1073, 825.99, 825.99, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-01-22', 1074, 995.00, 995.00, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-02-06', 1075, 995.00, 995.00, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-02-19', 1076, 995.00, 995.00, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-03-02', 1077, 995.00, 995.00, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-03-13', 1078, 995.00, 995.00, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-03-25', 1079, 995.00, 995.00, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-04-03', 1080, 995.00, 995.00, '4532015112830366', 'Visa', true, 9, NOW(), NOW()),
+    ('2025-04-11', 1081, 825.99, 825.99, '4532015112830366', 'Visa', true, 9, NOW(), NOW());
+
+-- 4. INSERTAR DETALLE DE LAS ÓRDENES (Productos en cada orden - Mínimo 5 items por orden)
+-- Órdenes de Ariel (ID 1) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (1, 1, NOW(), NOW()),
+    (1, 5, NOW(), NOW()),
+    (1, 8, NOW(), NOW()),
+    (1, 11, NOW(), NOW()),
+    (1, 14, NOW(), NOW()),
+    (2, 6, NOW(), NOW()),
+    (2, 9, NOW(), NOW()),
+    (2, 12, NOW(), NOW()),
+    (2, 2, NOW(), NOW()),
+    (2, 7, NOW(), NOW()),
+    (3, 7, NOW(), NOW()),
+    (3, 8, NOW(), NOW()),
+    (3, 3, NOW(), NOW()),
+    (3, 10, NOW(), NOW()),
+    (3, 13, NOW(), NOW()),
+    (4, 9, NOW(), NOW()),
+    (4, 4, NOW(), NOW()),
+    (4, 6, NOW(), NOW()),
+    (4, 15, NOW(), NOW()),
+    (4, 1, NOW(), NOW()),
+    (5, 10, NOW(), NOW()),
+    (5, 17, NOW(), NOW()),
+    (5, 5, NOW(), NOW()),
+    (5, 14, NOW(), NOW()),
+    (5, 2, NOW(), NOW()),
+    (6, 2, NOW(), NOW()),
+    (6, 11, NOW(), NOW()),
+    (6, 7, NOW(), NOW()),
+    (6, 4, NOW(), NOW()),
+    (6, 16, NOW(), NOW()),
+    (7, 3, NOW(), NOW()),
+    (7, 4, NOW(), NOW()),
+    (7, 9, NOW(), NOW()),
+    (7, 12, NOW(), NOW()),
+    (7, 6, NOW(), NOW()),
+    (8, 11, NOW(), NOW()),
+    (8, 12, NOW(), NOW()),
+    (8, 5, NOW(), NOW()),
+    (8, 8, NOW(), NOW()),
+    (8, 13, NOW(), NOW()),
+    (9, 13, NOW(), NOW()),
+    (9, 14, NOW(), NOW()),
+    (9, 1, NOW(), NOW()),
+    (9, 10, NOW(), NOW()),
+    (9, 3, NOW(), NOW());
+
+-- Órdenes de Helmut (ID 2) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (10, 15, NOW(), NOW()),
+    (10, 7, NOW(), NOW()),
+    (10, 3, NOW(), NOW()),
+    (10, 11, NOW(), NOW()),
+    (10, 6, NOW(), NOW()),
+    (11, 16, NOW(), NOW()),
+    (11, 1, NOW(), NOW()),
+    (11, 9, NOW(), NOW()),
+    (11, 4, NOW(), NOW()),
+    (11, 14, NOW(), NOW()),
+    (12, 2, NOW(), NOW()),
+    (12, 8, NOW(), NOW()),
+    (12, 12, NOW(), NOW()),
+    (12, 5, NOW(), NOW()),
+    (12, 13, NOW(), NOW()),
+    (13, 3, NOW(), NOW()),
+    (13, 10, NOW(), NOW()),
+    (13, 7, NOW(), NOW()),
+    (13, 15, NOW(), NOW()),
+    (13, 1, NOW(), NOW()),
+    (14, 4, NOW(), NOW()),
+    (14, 5, NOW(), NOW()),
+    (14, 11, NOW(), NOW()),
+    (14, 2, NOW(), NOW()),
+    (14, 9, NOW(), NOW()),
+    (15, 6, NOW(), NOW()),
+    (15, 14, NOW(), NOW()),
+    (15, 8, NOW(), NOW()),
+    (15, 3, NOW(), NOW()),
+    (15, 16, NOW(), NOW()),
+    (16, 7, NOW(), NOW()),
+    (16, 8, NOW(), NOW()),
+    (16, 12, NOW(), NOW()),
+    (16, 4, NOW(), NOW()),
+    (16, 10, NOW(), NOW()),
+    (17, 9, NOW(), NOW()),
+    (17, 1, NOW(), NOW()),
+    (17, 5, NOW(), NOW()),
+    (17, 13, NOW(), NOW()),
+    (17, 6, NOW(), NOW()),
+    (18, 10, NOW(), NOW()),
+    (18, 11, NOW(), NOW()),
+    (18, 15, NOW(), NOW()),
+    (18, 2, NOW(), NOW()),
+    (18, 7, NOW(), NOW());
+
+-- Órdenes de Rodrigo (ID 3) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (19, 6, NOW(), NOW()),
+    (19, 12, NOW(), NOW()),
+    (19, 1, NOW(), NOW()),
+    (19, 9, NOW(), NOW()),
+    (19, 4, NOW(), NOW()),
+    (20, 13, NOW(), NOW()),
+    (20, 3, NOW(), NOW()),
+    (20, 11, NOW(), NOW()),
+    (20, 8, NOW(), NOW()),
+    (20, 14, NOW(), NOW()),
+    (21, 14, NOW(), NOW()),
+    (21, 5, NOW(), NOW()),
+    (21, 10, NOW(), NOW()),
+    (21, 7, NOW(), NOW()),
+    (21, 2, NOW(), NOW()),
+    (22, 15, NOW(), NOW()),
+    (22, 16, NOW(), NOW()),
+    (22, 12, NOW(), NOW()),
+    (22, 6, NOW(), NOW()),
+    (22, 13, NOW(), NOW()),
+    (23, 1, NOW(), NOW()),
+    (23, 4, NOW(), NOW()),
+    (23, 9, NOW(), NOW()),
+    (23, 11, NOW(), NOW()),
+    (23, 3, NOW(), NOW()),
+    (24, 2, NOW(), NOW()),
+    (24, 3, NOW(), NOW()),
+    (24, 8, NOW(), NOW()),
+    (24, 5, NOW(), NOW()),
+    (24, 15, NOW(), NOW()),
+    (25, 4, NOW(), NOW()),
+    (25, 5, NOW(), NOW()),
+    (25, 10, NOW(), NOW()),
+    (25, 14, NOW(), NOW()),
+    (25, 7, NOW(), NOW()),
+    (26, 7, NOW(), NOW()),
+    (26, 6, NOW(), NOW()),
+    (26, 11, NOW(), NOW()),
+    (26, 1, NOW(), NOW()),
+    (26, 12, NOW(), NOW()),
+    (27, 8, NOW(), NOW()),
+    (27, 13, NOW(), NOW()),
+    (27, 2, NOW(), NOW()),
+    (27, 9, NOW(), NOW()),
+    (27, 16, NOW(), NOW());
+
+-- Órdenes de Sebastian Valverde (ID 4) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (28, 9, NOW(), NOW()),
+    (28, 3, NOW(), NOW()),
+    (28, 14, NOW(), NOW()),
+    (28, 6, NOW(), NOW()),
+    (28, 11, NOW(), NOW()),
+    (29, 10, NOW(), NOW()),
+    (29, 11, NOW(), NOW()),
+    (29, 1, NOW(), NOW()),
+    (29, 7, NOW(), NOW()),
+    (29, 4, NOW(), NOW()),
+    (30, 12, NOW(), NOW()),
+    (30, 5, NOW(), NOW()),
+    (30, 13, NOW(), NOW()),
+    (30, 8, NOW(), NOW()),
+    (30, 2, NOW(), NOW()),
+    (31, 13, NOW(), NOW()),
+    (31, 9, NOW(), NOW()),
+    (31, 15, NOW(), NOW()),
+    (31, 3, NOW(), NOW()),
+    (31, 10, NOW(), NOW()),
+    (32, 14, NOW(), NOW()),
+    (32, 15, NOW(), NOW()),
+    (32, 6, NOW(), NOW()),
+    (32, 12, NOW(), NOW()),
+    (32, 1, NOW(), NOW()),
+    (33, 16, NOW(), NOW()),
+    (33, 4, NOW(), NOW()),
+    (33, 8, NOW(), NOW()),
+    (33, 11, NOW(), NOW()),
+    (33, 5, NOW(), NOW()),
+    (34, 1, NOW(), NOW()),
+    (34, 7, NOW(), NOW()),
+    (34, 2, NOW(), NOW()),
+    (34, 14, NOW(), NOW()),
+    (34, 9, NOW(), NOW()),
+    (35, 2, NOW(), NOW()),
+    (35, 3, NOW(), NOW()),
+    (35, 10, NOW(), NOW()),
+    (35, 6, NOW(), NOW()),
+    (35, 13, NOW(), NOW()),
+    (36, 4, NOW(), NOW()),
+    (36, 12, NOW(), NOW()),
+    (36, 15, NOW(), NOW()),
+    (36, 5, NOW(), NOW()),
+    (36, 11, NOW(), NOW());
+
+-- Órdenes de Sebastian Diaz (ID 5) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (37, 5, NOW(), NOW()),
+    (37, 6, NOW(), NOW()),
+    (37, 1, NOW(), NOW()),
+    (37, 9, NOW(), NOW()),
+    (37, 3, NOW(), NOW()),
+    (38, 7, NOW(), NOW()),
+    (38, 4, NOW(), NOW()),
+    (38, 14, NOW(), NOW()),
+    (38, 11, NOW(), NOW()),
+    (38, 2, NOW(), NOW()),
+    (39, 8, NOW(), NOW()),
+    (39, 10, NOW(), NOW()),
+    (39, 13, NOW(), NOW()),
+    (39, 5, NOW(), NOW()),
+    (39, 15, NOW(), NOW()),
+    (40, 9, NOW(), NOW()),
+    (40, 10, NOW(), NOW()),
+    (40, 12, NOW(), NOW()),
+    (40, 6, NOW(), NOW()),
+    (40, 16, NOW(), NOW()),
+    (41, 11, NOW(), NOW()),
+    (41, 1, NOW(), NOW()),
+    (41, 8, NOW(), NOW()),
+    (41, 3, NOW(), NOW()),
+    (41, 7, NOW(), NOW()),
+    (42, 12, NOW(), NOW()),
+    (42, 13, NOW(), NOW()),
+    (42, 4, NOW(), NOW()),
+    (42, 9, NOW(), NOW()),
+    (42, 14, NOW(), NOW()),
+    (43, 14, NOW(), NOW()),
+    (43, 2, NOW(), NOW()),
+    (43, 11, NOW(), NOW()),
+    (43, 5, NOW(), NOW()),
+    (43, 10, NOW(), NOW()),
+    (44, 15, NOW(), NOW()),
+    (44, 16, NOW(), NOW()),
+    (44, 6, NOW(), NOW()),
+    (44, 1, NOW(), NOW()),
+    (44, 12, NOW(), NOW()),
+    (45, 3, NOW(), NOW()),
+    (45, 8, NOW(), NOW()),
+    (45, 13, NOW(), NOW()),
+    (45, 7, NOW(), NOW()),
+    (45, 4, NOW(), NOW());
+
+-- Órdenes de Nehemias Falcon (ID 6) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (46, 1, NOW(), NOW()),
+    (46, 2, NOW(), NOW()),
+    (46, 9, NOW(), NOW()),
+    (46, 11, NOW(), NOW()),
+    (46, 5, NOW(), NOW()),
+    (47, 2, NOW(), NOW()),
+    (47, 3, NOW(), NOW()),
+    (47, 6, NOW(), NOW()),
+    (47, 10, NOW(), NOW()),
+    (47, 14, NOW(), NOW()),
+    (48, 4, NOW(), NOW()),
+    (48, 5, NOW(), NOW()),
+    (48, 12, NOW(), NOW()),
+    (48, 8, NOW(), NOW()),
+    (48, 15, NOW(), NOW()),
+    (49, 6, NOW(), NOW()),
+    (49, 7, NOW(), NOW()),
+    (49, 1, NOW(), NOW()),
+    (49, 13, NOW(), NOW()),
+    (49, 4, NOW(), NOW()),
+    (50, 8, NOW(), NOW()),
+    (50, 9, NOW(), NOW()),
+    (50, 3, NOW(), NOW()),
+    (50, 11, NOW(), NOW()),
+    (50, 16, NOW(), NOW()),
+    (51, 9, NOW(), NOW()),
+    (51, 10, NOW(), NOW()),
+    (51, 2, NOW(), NOW()),
+    (51, 7, NOW(), NOW()),
+    (51, 12, NOW(), NOW()),
+    (52, 11, NOW(), NOW()),
+    (52, 5, NOW(), NOW()),
+    (52, 14, NOW(), NOW()),
+    (52, 6, NOW(), NOW()),
+    (52, 1, NOW(), NOW()),
+    (53, 12, NOW(), NOW()),
+    (53, 13, NOW(), NOW()),
+    (53, 4, NOW(), NOW()),
+    (53, 8, NOW(), NOW()),
+    (53, 10, NOW(), NOW()),
+    (54, 3, NOW(), NOW()),
+    (54, 15, NOW(), NOW()),
+    (54, 9, NOW(), NOW()),
+    (54, 2, NOW(), NOW()),
+    (54, 11, NOW(), NOW());
+
+-- Órdenes de user A (ID 7) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (55, 13, NOW(), NOW()),
+    (55, 14, NOW(), NOW()),
+    (55, 1, NOW(), NOW()),
+    (55, 6, NOW(), NOW()),
+    (55, 10, NOW(), NOW()),
+    (56, 15, NOW(), NOW()),
+    (56, 16, NOW(), NOW()),
+    (56, 4, NOW(), NOW()),
+    (56, 9, NOW(), NOW()),
+    (56, 3, NOW(), NOW()),
+    (57, 1, NOW(), NOW()),
+    (57, 7, NOW(), NOW()),
+    (57, 12, NOW(), NOW()),
+    (57, 5, NOW(), NOW()),
+    (57, 11, NOW(), NOW()),
+    (58, 2, NOW(), NOW()),
+    (58, 3, NOW(), NOW()),
+    (58, 8, NOW(), NOW()),
+    (58, 13, NOW(), NOW()),
+    (58, 14, NOW(), NOW()),
+    (59, 4, NOW(), NOW()),
+    (59, 6, NOW(), NOW()),
+    (59, 10, NOW(), NOW()),
+    (59, 15, NOW(), NOW()),
+    (59, 1, NOW(), NOW()),
+    (60, 5, NOW(), NOW()),
+    (60, 9, NOW(), NOW()),
+    (60, 2, NOW(), NOW()),
+    (60, 7, NOW(), NOW()),
+    (60, 11, NOW(), NOW()),
+    (61, 6, NOW(), NOW()),
+    (61, 7, NOW(), NOW()),
+    (61, 12, NOW(), NOW()),
+    (61, 3, NOW(), NOW()),
+    (61, 16, NOW(), NOW()),
+    (62, 8, NOW(), NOW()),
+    (62, 13, NOW(), NOW()),
+    (62, 4, NOW(), NOW()),
+    (62, 10, NOW(), NOW()),
+    (62, 14, NOW(), NOW()),
+    (63, 1, NOW(), NOW()),
+    (63, 5, NOW(), NOW()),
+    (63, 9, NOW(), NOW()),
+    (63, 15, NOW(), NOW()),
+    (63, 6, NOW(), NOW());
+
+-- Órdenes de userB (ID 8) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (64, 9, NOW(), NOW()),
+    (64, 10, NOW(), NOW()),
+    (64, 11, NOW(), NOW()),
+    (64, 2, NOW(), NOW()),
+    (64, 7, NOW(), NOW()),
+    (65, 12, NOW(), NOW()),
+    (65, 3, NOW(), NOW()),
+    (65, 8, NOW(), NOW()),
+    (65, 13, NOW(), NOW()),
+    (65, 1, NOW(), NOW()),
+    (66, 13, NOW(), NOW()),
+    (66, 4, NOW(), NOW()),
+    (66, 14, NOW(), NOW()),
+    (66, 6, NOW(), NOW()),
+    (66, 5, NOW(), NOW()),
+    (67, 14, NOW(), NOW()),
+    (67, 15, NOW(), NOW()),
+    (67, 9, NOW(), NOW()),
+    (67, 11, NOW(), NOW()),
+    (67, 16, NOW(), NOW()),
+    (68, 16, NOW(), NOW()),
+    (68, 1, NOW(), NOW()),
+    (68, 10, NOW(), NOW()),
+    (68, 12, NOW(), NOW()),
+    (68, 2, NOW(), NOW()),
+    (69, 1, NOW(), NOW()),
+    (69, 3, NOW(), NOW()),
+    (69, 7, NOW(), NOW()),
+    (69, 13, NOW(), NOW()),
+    (69, 4, NOW(), NOW()),
+    (70, 2, NOW(), NOW()),
+    (70, 3, NOW(), NOW()),
+    (70, 8, NOW(), NOW()),
+    (70, 5, NOW(), NOW()),
+    (70, 15, NOW(), NOW()),
+    (71, 4, NOW(), NOW()),
+    (71, 6, NOW(), NOW()),
+    (71, 9, NOW(), NOW()),
+    (71, 14, NOW(), NOW()),
+    (71, 10, NOW(), NOW()),
+    (72, 11, NOW(), NOW()),
+    (72, 12, NOW(), NOW()),
+    (72, 1, NOW(), NOW()),
+    (72, 7, NOW(), NOW()),
+    (72, 3, NOW(), NOW());
+
+-- Órdenes de Lucía Torres (ID 9) - 9 órdenes × 5 items = 45 items
+INSERT INTO item_ordens (id_orden, id_producto, "createdAt", "updatedAt")
+VALUES
+    (73, 5, NOW(), NOW()),
+    (73, 6, NOW(), NOW()),
+    (73, 1, NOW(), NOW()),
+    (73, 9, NOW(), NOW()),
+    (73, 11, NOW(), NOW()),
+    (74, 7, NOW(), NOW()),
+    (74, 8, NOW(), NOW()),
+    (74, 2, NOW(), NOW()),
+    (74, 14, NOW(), NOW()),
+    (74, 4, NOW(), NOW()),
+    (75, 8, NOW(), NOW()),
+    (75, 9, NOW(), NOW()),
+    (75, 3, NOW(), NOW()),
+    (75, 10, NOW(), NOW()),
+    (75, 13, NOW(), NOW()),
+    (76, 9, NOW(), NOW()),
+    (76, 10, NOW(), NOW()),
+    (76, 12, NOW(), NOW()),
+    (76, 5, NOW(), NOW()),
+    (76, 15, NOW(), NOW()),
+    (77, 11, NOW(), NOW()),
+    (77, 6, NOW(), NOW()),
+    (77, 16, NOW(), NOW()),
+    (77, 1, NOW(), NOW()),
+    (77, 7, NOW(), NOW()),
+    (78, 12, NOW(), NOW()),
+    (78, 13, NOW(), NOW()),
+    (78, 2, NOW(), NOW()),
+    (78, 8, NOW(), NOW()),
+    (78, 4, NOW(), NOW()),
+    (79, 13, NOW(), NOW()),
+    (79, 14, NOW(), NOW()),
+    (79, 3, NOW(), NOW()),
+    (79, 10, NOW(), NOW()),
+    (79, 6, NOW(), NOW()),
+    (80, 14, NOW(), NOW()),
+    (80, 15, NOW(), NOW()),
+    (80, 16, NOW(), NOW()),
+    (80, 5, NOW(), NOW()),
+    (80, 9, NOW(), NOW()),
+    (81, 1, NOW(), NOW()),
+    (81, 2, NOW(), NOW()),
+    (81, 3, NOW(), NOW()),
+    (81, 4, NOW(), NOW()),
+    (81, 11, NOW(), NOW());

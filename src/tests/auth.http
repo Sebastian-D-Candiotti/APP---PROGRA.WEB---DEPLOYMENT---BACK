@@ -1,0 +1,58 @@
+POST http://localhost:3005/auth/registrar
+Content-Type: application/json
+
+{
+  "nombre": "TEST",
+  "correo": "TEST",
+  "password": "TEST",
+  "img": "a.png",
+  "estado": true,
+  "fechaRegistro": "2025-11-30",
+  "rol": "cliente",
+  "dni": "12345678"
+}
+
+###
+POST http://localhost:3005/auth/login
+Content-Type: application/json
+
+{
+    "correo": "TEST",
+    "password": "TEST"
+}
+###
+POST http://localhost:3005/producto
+Content-Type: application/json
+
+{
+    "descuento":22,
+    "stock":22,
+    "nombre":"pablo",
+    "presentacion":"hola",
+    "categoria":"juguetes",
+    "precio":22,
+    "img":"32131.png",
+    "genero":"femenno",
+    "descripcion":"juego chevere"
+}
+###
+POST http://localhost:3005/categoria
+Content-Type: application/json
+
+{
+        "nombre": "ariel",
+        "img": "pepe",
+        "ruta": "as",
+        "label":"dasd",
+        "descripcion": "dasd",
+}
+###
+GET http://localhost:3005/categoria
+###
+GET http://localhost:3005/producto
+###
+GET http://localhost:3005/orden/1
+###
+GET http://localhost:3005/carrito/6
+###
+GET http://localhost:3005/auth
