@@ -1,35 +1,38 @@
 import Sequelize from 'sequelize';
 import pg from 'pg';
 
-// Caso 1: Si estamos en producción (Vercel + Neon)
+// Si estás en producción (Vercel) existirá DATABASE_URL
 const connectionString = process.env.DATABASE_URL;
 
-// Caso 2: Si estamos en local
+// Configuración local (tu PostgreSQL en tu PC)
 const localConfig = {
-  database: 'tiendadb',
-  username: 'postgres',
-  password: 'sebas67',
-  host: 'localhost',
-  port: 5432,
+  database: process.env.DB_NAME || "tiendadb",
+  username: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'sebas67',
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || 5432,
   dialect: 'postgres'
 };
 
 let sequelize;
 
 if (connectionString) {
-  // 🔥 Modo Producción (Neon)
+
   sequelize = new Sequelize(connectionString, {
     dialect: 'postgres',
     dialectModule: pg,
-    ssl: true,
+    logging: false,
     dialectOptions: {
-      ssl: { require: true }
-    },
-    logging: false
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
   });
-  console.log("Conectando a Neon/PostgreSQL en modo producción...");
+
+  console.log("🌐 Conectado a Neon/PostgreSQL (PRODUCCIÓN)");
 } else {
-  // 🖥️ Modo Local
+
   sequelize = new Sequelize(
     localConfig.database,
     localConfig.username,
@@ -41,7 +44,8 @@ if (connectionString) {
       logging: false
     }
   );
-  console.log("Conectando a PostgreSQL LOCAL...");
+
+  console.log("🖥️ Conectado a PostgreSQL LOCAL");
 }
 
 export default sequelize;
