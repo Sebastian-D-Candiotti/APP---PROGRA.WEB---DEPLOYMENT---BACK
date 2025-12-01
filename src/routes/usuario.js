@@ -6,6 +6,8 @@ const router = express.Router()
 
 router.post('/registrar', usuarioController.registrar);
 router.post('/login', usuarioController.login)
+router.post('/find-by-email', usuarioController.findByEmail);
+router.post('/reset-password', usuarioController.resetPassword);
 
 router.get('/', authMiddleware, usuarioController.findAll);
 router.get('/:id', authMiddleware, usuarioController.findOne);

@@ -37,23 +37,17 @@ class RepositoryBase {
     }
 
     async update(id, entity) {
-        try {
-            const result = await this.model.update(entity, {
-                where: { id: id },
-                returning: true // Opción útil para Postgres
-            });
-            
-            // Si se actualizó algo, devolvemos el objeto actualizado
-            if (result && result[0] > 0) {
-                 // result[1][0] contiene el objeto actualizado en Postgres
-                return result[1][0];
-            }
-            return null;
-        } catch (error) {
-            console.error('Error en update:', error);
-            return null;
-        }
+    try {
+        const result = await this.model.update(entity, {
+            where: { id: id },
+        });
+        return result; 
+
+    } catch (error) {
+        console.error('Error en update:', error);
+        return [0]; 
     }
+}
     /*
     async update(entity) {
         try {

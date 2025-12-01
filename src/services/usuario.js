@@ -55,7 +55,6 @@ const registrar = async ({ nombre, correo, password, dni, img,estado,fechaRegist
 
 const login = async ({usuario: correo, password}) => {
     
-    // Mueve logs y la lógica dentro del try/catch
     try {
         if (!correo || !password) { /* ... */ }
 
@@ -106,6 +105,44 @@ const login = async ({usuario: correo, password}) => {
     }
 };
 
-const usuarioService = { registrar, login }
+const resetPassword = async (userId, newPassword) => {
+    try {
+        if (!userId || !newPassword) {
+            return {
+                success: false,
+                message: 'El ID de usuario y la nueva contraseña son requeridos.'
+            }
+        }
+
+        if (newPassword.length < 5) {
+             return { success: false, message: 'La nueva contraseña debe tener al menos 5 caracteres.' };
+        }
+    
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+    
+        const updatePayload = {
+            password: hashedPassword,
+            updateAt: new Date()
+        };
+    
+        const [rowsAffected] = await repository.update(userId, updatePayload); 
+
+        if (rowsAffected === 0) {
+            return { success: false, message: "No se pudo actualizar la contraseña. Usuario no encontrado o sin cambios." };
+        }
+    
+        return { 
+            success: true, 
+            message: "Contraseña restablecida con éxito." 
+        };
+
+    } catch (error) {
+        console.error('Error al restablecer contraseña:', error);
+        return { success: false, message: "Error interno del servidor al restablecer contraseña." };
+    }
+};
+
+const usuarioService = { registrar, login, resetPassword }
 
 export default usuarioService;

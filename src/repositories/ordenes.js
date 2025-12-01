@@ -1,47 +1,79 @@
-import repository from '../repositories/ordenes.js'
+import Orden from '../models/ordenes.js'
+import ItemOrden from '../models/itemOrden.js'
+import Producto from '../models/producto.js'
+import Usuario from '../models/usuario.js'
+import RepositoryBase from './RepositoryBase.js'
 
-const findAll = async (req, res) => {
-    const respuesta = await repository.findAll();
-    return sendResults(respuesta, res, "No se encontraron órdenes.");
-}
-
-const findByUser = async (req, res) => {
-    const userId = req.params.userId;
-    const respuesta = await repository.findByUser(userId);
-    return sendResults(respuesta, res, "No se encontraron órdenes para este usuario.");
-}
-
-const create = async (req, res) => {
-    const { items, ...ordenData } = req.body;
-
-    if (!items || items.length === 0) {
-        return res.status(400).json({ message: "La orden debe tener productos." });
+class OrdenesRepository extends RepositoryBase {
+    constructor() {
+        super(Orden);
     }
 
-    try {
-        const nuevaOrden = await repository.createWithItems(ordenData, items);
-
-        if (!nuevaOrden) {
-            return res.status(500).json({ message: "Error al crear la orden." });
+    async findAll() {
+        try {
+            return await this.model.findAll({
+                include: [
+                    { model: ItemOrden, as: 'detalles', include: [{ model: Producto, as: 'producto' }] },
+                    { model: Usuario, as: 'usuario' }
+                ],
+                order: [['id', 'ASC']]
+            });
+        } catch (error) {
+            console.error('Error repository.findAll (ordenes):', error);
+            return null;
         }
+    }
 
-        return res.status(200).json({ 
-            message: "Orden creada correctamente",
-            orden: nuevaOrden
-        });
-    } catch (error) {
-        console.error("Error creando orden:", error);
-        return res.status(500).json({ message: "Error interno al crear la orden." });
+    async findByUser(userId) {
+        try {
+            return await this.model.findAll({
+                where: { id_user: userId },
+                include: [
+                    { model: ItemOrden, as: 'detalles', include: [{ model: Producto, as: 'producto' }] },
+                    { model: Usuario, as: 'usuario' }
+                ],
+                order: [['id', 'DESC']]
+            });
+        } catch (error) {
+            console.error('Error repository.findByUser (ordenes):', error);
+            return null;
+        }
+    }
+
+    async createWithItems(ordenData, items) {
+        const sequelize = this.model.sequelize;
+        const t = await sequelize.transaction();
+        try {
+            const nuevaOrden = await this.model.create(ordenData, { transaction: t });
+
+            const itemsToCreate = items.map(i => ({
+                id_orden: nuevaOrden.id,
+                id_producto: i.id || i.productoId || i.id_producto,
+                cantidad: i.cantidad || i.qty || i.quantity || 1
+            }));
+
+            if (itemsToCreate.length > 0) {
+                await ItemOrden.bulkCreate(itemsToCreate, { transaction: t });
+            }
+
+            await t.commit();
+
+            // devolver la orden con detalles
+            return await this.model.findOne({
+                where: { id: nuevaOrden.id },
+                include: [
+                    { model: ItemOrden, as: 'detalles', include: [{ model: Producto, as: 'producto' }] },
+                    { model: Usuario, as: 'usuario' }
+                ]
+            });
+        } catch (error) {
+            await t.rollback();
+            console.error('Error repository.createWithItems (ordenes):', error);
+            return null;
+        }
     }
 }
 
-const sendResults = (result, res, message) => {
-    if (result)
-        return res.status(200).json(result);
-    else
-        return res.status(500).json({ message })
-}
+const repository = new OrdenesRepository();
 
-const controller = { findAll, findByUser, create }
-
-export default controller;
+export default repository;

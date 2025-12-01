@@ -25,6 +25,12 @@ const ItemOrden = sequelize.define('item_orden', {
             key: 'id'
         }
     }
+    ,
+    cantidad: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
+    }
 })
 
 export default ItemOrden;

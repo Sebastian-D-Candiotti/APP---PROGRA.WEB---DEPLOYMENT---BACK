@@ -61,6 +61,10 @@ repository.findByName = async function (productname) {
 export default repository;
 
 /*
+  Producto repository: devuelve productos incluyendo su categoría (categoriaDetail).
+  Comentarios de documentación eliminados para evitar código no válido.
+*/
+/*
 ```
 
 ### ¿Qué cambiará en tu Frontend?
