@@ -1,4 +1,6 @@
 import repository from '../repositories/ordenes.js'
+import ItemOrden from '../models/itemOrden.js';
+import Orden from '../models/ordenes.js';
 
 const findAll = async (req, res) => {
     const respuesta = await repository.findAll();
@@ -12,16 +14,37 @@ const findByUser = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    // Esperamos recibir: { ...datosOrden, items: [{id_producto, cantidad, etc}] }
-    const { items, ...ordenData } = req.body;
-    
-    if (!items || items.length === 0) {
-        return res.status(400).json({ message: "La orden debe tener productos." });
-    }
+  const { id_user, total, precio_productos, NroTarjeta, TipoTarjeta, estado, items } = req.body;
 
-    const createdObj = await repository.createWithItems(ordenData, items);
-    return sendResults(createdObj, res, "Error al crear la orden.");
-}
+  if (!items || items.length === 0) {
+      return res.status(400).json({ message: "La orden debe tener productos." });
+  }
+
+  try {
+      // 1️⃣ Crear la orden
+      const nuevaOrden = await Orden.create({ id_user, total, precio_productos, NroTarjeta, TipoTarjeta, estado });
+
+      // 2️⃣ Crear los items de la orden
+      const itemsOrden = items.map(item => ({
+          id_orden: nuevaOrden.id,
+          id_producto: item.id,
+          cantidad: item.cantidad
+      }));
+      await ItemOrden.bulkCreate(itemsOrden);
+
+      // 3️⃣ Recuperar los items para devolverlos
+      const detalles = await ItemOrden.findAll({
+          where: { id_orden: nuevaOrden.id },
+          include: ['producto'] // si tienes relación con productos
+      });
+
+      res.status(201).json({ ...nuevaOrden.dataValues, detalles });
+
+  } catch (error) {
+      console.error("Error creando orden:", error);
+      res.status(500).json({ message: "Error interno al crear la orden." });
+  }
+};
 
 const sendResults = (result, res, message) => {
     if (result)

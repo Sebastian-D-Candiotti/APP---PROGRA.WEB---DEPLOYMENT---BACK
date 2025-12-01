@@ -1,68 +1,70 @@
-import app from './app.js'
-import sequelize from './src/config/database.js'
-import './src/models/asociations.js'
+import app from './app.js';
+import sequelize from './src/config/database.js';
+import './src/models/asociations.js';
 
+// ------------------------------
+// 🔐 Conexión para Vercel (solo autenticar)
+// ------------------------------
 let dbConnected = false;
 
 async function ensureDatabaseConnection() {
     if (!dbConnected) {
         try {
             await sequelize.authenticate();
-            console.log('Conexión a la base de datos establecida correctamente');
+            console.log("✔ Conexión a la base de datos establecida (Vercel)");
             dbConnected = true;
         } catch (error) {
-            console.error('Error conectando a la base de datos:', error);
+            console.error("❌ Error conectando a la base de datos:", error);
             throw error;
         }
     }
 }
 
-
+// ------------------------------
+// 🚀 MODO LOCAL (sí sincroniza las tablas)
+// ------------------------------
 async function main() {
     try {
-        
-        // Solo forzar sincronización (dropear y recrear tablas) cuando se pase
-        // explícitamente un flag de inicialización. Evita que cualquier argumento
-        // accidental provoque la regeneración de tablas.
         const args = process.argv.slice(2);
-        const init = args.includes('init') || args.includes('-init') || args.includes('--init');
+        const init =
+            args.includes('init') ||
+            args.includes('-init') ||
+            args.includes('--init');
 
         if (init)
             await sequelize.sync({ force: true });
         else
             await sequelize.sync({ force: false });
 
-        console.log('Base de datos Sincronizada!')
+        console.log('✔ Base de datos sincronizada (LOCAL)');
 
-        const port = 3005;
-
-
-        app.listen(port, () => {
-            console.log('Server is running on port: ' + port)
-        })  
+        const port = process.env.PORT || 3005;
+        app.listen(port, () =>
+            console.log('Servidor corriendo en puerto: ' + port)
+        );
 
     } catch (error) {
-        console.log(error)        
+        console.log(error);
     }
-
 }
 
-// Detectar si estamos en Vercel o desarrollo local
+// ------------------------------
+// 🔍 Detectar si estamos en Vercel
+// ------------------------------
 if (process.env.VERCEL) {
-  // En Vercel, solo validar conexión (no sincronizar esquema)
-  app.use(async (req, res, next) => {
-    await ensureDatabaseConnection();
-    next();
-  });
+    console.log("🌐 Ejecutando en Vercel (NO sincroniza BD)");
+
+    app.use(async (req, res, next) => {
+        await ensureDatabaseConnection(); // solo autentica
+        next();
+    });
+
 } else {
-  // En local, ejecutar el servidor normalmente
-  main();
+    console.log("💻 Ejecutando en modo LOCAL");
+    main();
 }
 
-// Exportar para Vercel
+// Obligatorio para Vercel
 export default app;
-
-
-
 
 
