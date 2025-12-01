@@ -1,17 +1,20 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import app from './app.js';
 import sequelize from './src/config/database.js';
 import './src/models/asociations.js';
 
-// ------------------------------
+// -------------------------------------------
 // 🔐 Conexión para Vercel (solo autenticar)
-// ------------------------------
+// -------------------------------------------
 let dbConnected = false;
 
 async function ensureDatabaseConnection() {
     if (!dbConnected) {
         try {
             await sequelize.authenticate();
-            console.log("✔ Conexión a la base de datos establecida (Vercel)");
+            console.log("✔ Conexión establecida con la base de datos (Neon/Vercel)");
             dbConnected = true;
         } catch (error) {
             console.error("❌ Error conectando a la base de datos:", error);
@@ -20,9 +23,9 @@ async function ensureDatabaseConnection() {
     }
 }
 
-// ------------------------------
-// 🚀 MODO LOCAL (sí sincroniza las tablas)
-// ------------------------------
+// -------------------------------------------
+// 🚀 MODO LOCAL
+// -------------------------------------------
 async function main() {
     try {
         const args = process.argv.slice(2);
@@ -38,7 +41,7 @@ async function main() {
 
         console.log('✔ Base de datos sincronizada (LOCAL)');
 
-        const port = process.env.PORT || 3005;
+        const port = 3005; // ⬅️ PUERTO FIJO EN LOCAL
         app.listen(port, () =>
             console.log('Servidor corriendo en puerto: ' + port)
         );
@@ -48,9 +51,9 @@ async function main() {
     }
 }
 
-// ------------------------------
+// -------------------------------------------
 // 🔍 Detectar si estamos en Vercel
-// ------------------------------
+// -------------------------------------------
 if (process.env.VERCEL) {
     console.log("🌐 Ejecutando en Vercel (NO sincroniza BD)");
 
@@ -60,11 +63,9 @@ if (process.env.VERCEL) {
     });
 
 } else {
-    console.log("💻 Ejecutando en modo LOCAL");
+    console.log("💻 Ejecutando LOCAL en puerto 3005");
     main();
 }
 
 // Obligatorio para Vercel
 export default app;
-
-
